@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Phone, Star, Shield, Clock, DollarSign } from "lucide-react";
 import { ownerName, businessName, profession, phoneDisplay, phoneNumber, stats, ease } from "@/lib/profile-data";
 import heroPortrait from "@/assets/hero-portrait.png";
+import CalendarEmbed from "@/components/CalendarEmbed";
+import ContentShowcaseBar from "@/components/ContentShowcaseBar";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 30 },
@@ -131,6 +133,20 @@ const SalesFunnel = () => {
               <p className="text-xs text-center text-muted-foreground">Free consultation · No obligation</p>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Calendar Embed */}
+      <section className="py-24 px-6">
+        <div className="max-w-3xl mx-auto">
+          <CalendarEmbed theme="dark" />
+        </div>
+      </section>
+
+      {/* Content Showcase */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <ContentShowcaseBar delay={0.2} theme="dark" />
         </div>
       </section>
 

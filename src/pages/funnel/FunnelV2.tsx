@@ -3,6 +3,8 @@ import { Phone, Check, ArrowRight, Star, ChevronRight } from "lucide-react";
 import { ownerName, businessName, profession, phoneDisplay, phoneNumber, stats, ease } from "@/lib/profile-data";
 import heroPortrait from "@/assets/hero-portrait.png";
 import heroFull from "@/assets/hero-portrait-full.jpg";
+import CalendarEmbed from "@/components/CalendarEmbed";
+import ContentShowcaseBar from "@/components/ContentShowcaseBar";
 
 const fade = (d: number) => ({
   initial: { opacity: 0, y: 30 },
@@ -185,6 +187,20 @@ const FunnelV2 = () => (
             </motion.div>
           ))}
         </div>
+      </div>
+    </section>
+
+    {/* Calendar Embed */}
+    <section className="py-24 px-6">
+      <div className="max-w-3xl mx-auto">
+        <CalendarEmbed theme="light-green" />
+      </div>
+    </section>
+
+    {/* Content Showcase */}
+    <section className="py-16 px-6" style={{ background: "#fafaf9" }}>
+      <div className="max-w-5xl mx-auto">
+        <ContentShowcaseBar delay={0.2} theme="light-green" />
       </div>
     </section>
 

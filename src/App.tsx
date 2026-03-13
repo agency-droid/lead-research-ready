@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import BackToGallery from "./components/BackToGallery";
 import Gallery from "./pages/Gallery";
 import CardV1 from "./pages/card/CardV1";
 import CardV2 from "./pages/card/CardV2";
@@ -23,6 +24,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <BackToGallery />
         <Routes>
           <Route path="/" element={<Gallery />} />
           <Route path="/card/v1" element={<CardV1 />} />

@@ -120,15 +120,15 @@ NOTION_TOKEN=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
 These are needed for the research phase. Check with Tim — some may not be active yet:
 
 ```env
-APIFY_TOKEN=<ASK TIM — not yet in credentials file>
+APIFY_TOKEN=apify_api_ojxBkdXiuqKrNpxbJuLNvP73zmeMha2rVm1J
 LINKDAPI_API_KEY=<ASK TIM — not yet in credentials file>
 NYNE_API_KEY=<ASK TIM — not yet in credentials file>
 NYNE_API_SECRET=<ASK TIM — not yet in credentials file>
 ```
 
-> ⚠️ **Blocker note:** The Apify, LinkdAPI, and Nyne keys are referenced in the research skill but were not yet present in the master credentials file as of 2026-03-13. If you're hitting errors in Phase 1, this is likely why. Ask Tim and he'll get you the keys.
+> ⚠️ **Partial blocker:** Apify is live (Instagram, TikTok, YouTube, Facebook scraping all work). LinkdAPI and Nyne are still missing — LinkedIn and person enrichment steps in Phase 1 will be skipped until Tim adds those keys. Ask Tim if you need them.
 
-If you have the keys above, you're fully equipped for Phases 2–4 while Tim sorts out Phase 1 API access.
+You're fully equipped for Phase 1 social scraping + Phases 2–4. Only LinkedIn (LinkdAPI) and person enrichment (Nyne) are pending.
 
 ---
 

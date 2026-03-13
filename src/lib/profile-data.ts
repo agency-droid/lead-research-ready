@@ -48,4 +48,4 @@ ADR;TYPE=WORK:;;Baton Rouge;Louisiana;;US
 URL:https://www.bonvenubank.com
 END:VCARD`;
 
-export const ease = [0.25, 0.46, 0.45, 0.94] as const;
+export const ease: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];

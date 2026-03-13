@@ -60,7 +60,7 @@ const SocialVideoBar = ({ delay = 0 }: SocialVideoBarProps) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay, ease: [...ease] }}
+      transition={{ duration: 0.5, delay, ease }}
       className="w-full"
     >
       <h3 className="text-sm font-medium text-muted-foreground mb-3">Featured Videos</h3>

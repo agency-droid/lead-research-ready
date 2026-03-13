@@ -136,6 +136,20 @@ const SalesFunnel = () => {
         </div>
       </section>
 
+      {/* Calendar Embed */}
+      <section className="py-24 px-6">
+        <div className="max-w-3xl mx-auto">
+          <CalendarEmbed theme="dark" />
+        </div>
+      </section>
+
+      {/* Content Showcase */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <ContentShowcaseBar delay={0.2} theme="dark" />
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-24 px-6 bg-secondary/20">
         <div className="max-w-3xl mx-auto text-center space-y-8">

@@ -11,7 +11,7 @@ import heroPortrait from "@/assets/hero-portrait.png";
 
 const stagger = (i: number) => ({ opacity: 0, y: 20 });
 const staggerTo = { opacity: 1, y: 0 };
-const staggerT = (i: number) => ({ duration: 0.5, delay: 0.1 * i, ease: [...ease] });
+const staggerT = (i: number) => ({ duration: 0.5, delay: 0.1 * i, ease });
 
 const CardLayout = () => {
   return (

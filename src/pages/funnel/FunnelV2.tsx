@@ -3,6 +3,8 @@ import { Phone, Check, ArrowRight, Star, ChevronRight } from "lucide-react";
 import { ownerName, businessName, profession, phoneDisplay, phoneNumber, stats, ease } from "@/lib/profile-data";
 import heroPortrait from "@/assets/hero-portrait.png";
 import heroFull from "@/assets/hero-portrait-full.jpg";
+import CalendarEmbed from "@/components/CalendarEmbed";
+import ContentShowcaseBar from "@/components/ContentShowcaseBar";
 
 const fade = (d: number) => ({
   initial: { opacity: 0, y: 30 },

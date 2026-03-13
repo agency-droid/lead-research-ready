@@ -1,23 +1,6 @@
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ServicesSection from "@/components/ServicesSection";
-import SocialProofSection from "@/components/SocialProofSection";
-import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
+import DigitalCard from "./DigitalCard";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <SocialProofSection />
-      <CTASection />
-      <Footer />
-    </div>
-  );
-};
+// Redirect to DigitalCard as default
+const Index = () => <DigitalCard />;
 
 export default Index;

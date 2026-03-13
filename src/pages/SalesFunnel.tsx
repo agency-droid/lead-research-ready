@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Phone, Star, Shield, Clock, DollarSign } from "lucide-react";
 import { ownerName, businessName, profession, phoneDisplay, phoneNumber, stats, ease } from "@/lib/profile-data";
 import heroPortrait from "@/assets/hero-portrait.png";
+import CalendarEmbed from "@/components/CalendarEmbed";
+import ContentShowcaseBar from "@/components/ContentShowcaseBar";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 30 },

@@ -4,6 +4,8 @@ import { Phone, ArrowRight, Check, ChevronDown, Shield, Clock, Star, DollarSign 
 import { ownerName, businessName, profession, phoneDisplay, phoneNumber, stats, email, ease } from "@/lib/profile-data";
 import heroPortrait from "@/assets/hero-portrait.png";
 import heroFull from "@/assets/hero-portrait-full.jpg";
+import CalendarEmbed from "@/components/CalendarEmbed";
+import ContentShowcaseBar from "@/components/ContentShowcaseBar";
 
 const fade = (d: number) => ({
   initial: { opacity: 0, y: 30 },

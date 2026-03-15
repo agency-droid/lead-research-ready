@@ -1,186 +1,371 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, Shield, Users, TrendingUp, Phone, MapPin, Mail, ChevronRight } from "lucide-react";
-import { ownerName, businessName, profession, bioText, stats, phoneDisplay, phoneNumber, email, socials, ease } from "@/lib/profile-data";
-import heroFull from "@/assets/hero-portrait-full.jpg";
+import { ArrowRight, ChevronRight, Check, Play, Mail, Phone, MapPin, Instagram, Facebook } from "lucide-react";
+import { ownerName, businessName, phoneDisplay, email, ease } from "@/lib/profile-data";
 import heroPortrait from "@/assets/hero-portrait.png";
 
-const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 30 },
+const fade = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6, delay, ease },
+  transition: { duration: 0.55, delay, ease },
 });
 
+const specialties = ["Hormones", "NAD+", "Peptides", "Longevity", "Weight", "Aesthetics", "IV Therapy", "Genetics"];
+
 const services = [
-  { icon: Briefcase, title: "Commercial Loans", desc: "Tailored lending solutions for businesses of all sizes with competitive rates." },
-  { icon: Shield, title: "SBA Loans", desc: "Government-backed loan programs to help your business grow with favorable terms." },
-  { icon: TrendingUp, title: "Lines of Credit", desc: "Flexible revolving credit lines to manage cash flow and seize opportunities." },
-  { icon: Users, title: "Business Banking", desc: "Full-service banking relationships built on trust and personalized attention." },
+  {
+    title: "Vitality Blueprint",
+    desc: "124 wellness biomarkers — the most comprehensive diagnostic in Baton Rouge.",
+    gradient: "from-teal-600 to-teal-400",
+  },
+  {
+    title: "Hormone Optimization",
+    desc: "Bioidentical BHRT tailored to your biology. Pellets, creams, troches.",
+    gradient: "from-slate-600 to-slate-400",
+  },
+  {
+    title: "NAD+ & IV Therapy",
+    desc: "NAD+ infusions, peptide therapy, and IV hydration to restore cellular health.",
+    gradient: "from-teal-800 to-teal-600",
+  },
+  {
+    title: "Weight & Metabolic Health",
+    desc: "Root-cause weight management with GLP-1, hormone balancing & nutrition.",
+    gradient: "from-slate-700 to-slate-500",
+  },
 ];
+
+const values = [
+  "Patient-first, root-cause medicine",
+  "PharmD + IFM-certified MD + NP on your team",
+  "124 biomarkers — not a generic checkup",
+  "Personalized. Never generic.",
+];
+
+const partners = ["PCCA", "EVEXIAS", "A4M", "EvexiPEL", "BBB A+", "Audible Podcast"];
 
 const FullSite = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navbar */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <div className="min-h-screen font-sans" style={{ fontFamily: "'Inter', sans-serif" }}>
+
+      {/* ── NAVBAR ── */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-slate-100">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          <p className="font-bold text-lg text-foreground" style={{ fontFamily: "var(--font-heading)" }}>{businessName}</p>
+          <p className="font-bold text-xl text-slate-900" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            {businessName}<span className="text-teal-500">.</span>
+          </p>
           <nav className="hidden sm:flex items-center gap-8">
-            <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <a href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Services</a>
-            <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
-            <Button asChild variant="hero" size="sm">
-              <a href={`tel:${phoneNumber}`}>Get Started</a>
-            </Button>
+            <a href="#about" className="text-sm text-slate-500 hover:text-slate-900 transition-colors">About</a>
+            <a href="#services" className="text-sm text-slate-500 hover:text-slate-900 transition-colors">Services</a>
+            <a href="#contact" className="text-sm text-slate-500 hover:text-slate-900 transition-colors">Contact</a>
+            <a
+              href="https://links.journeywell.io/widget/booking/zhpX7oUADvHcPFEJGOYl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-teal-500 hover:bg-teal-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
+            >
+              Get Started Free
+            </a>
           </nav>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-center px-6 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
-        </div>
-        <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center pt-20">
+      {/* ── HERO ── */}
+      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-teal-50 overflow-hidden pt-20">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-100/40 rounded-full blur-[120px] pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
+
+          {/* Left */}
           <motion.div {...fade(0.1)} className="space-y-6">
-            <p className="text-primary font-medium tracking-wider uppercase text-sm">{businessName}</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Your Business <span className="text-gradient">Deserves Better</span> Banking
+            <span className="bg-teal-100 text-teal-700 text-xs font-semibold px-4 py-2 rounded-full uppercase tracking-wider">
+              Integrative · Functional · Personalized Medicine
+            </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-slate-900" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Pioneering a <span className="text-teal-500">New Era</span> in Healthcare.
             </h1>
-            <p className="text-lg text-muted-foreground max-w-md">{bioText}</p>
+            <p className="text-lg text-slate-500 max-w-md leading-relaxed">
+              Not sick but not feeling optimal either? After 18 years watching patients leave with more prescriptions and less health, Dr. Angie Huff built something different.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild variant="hero" size="xl">
-                <a href={`tel:${phoneNumber}`}>
-                  Schedule a Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-              <Button asChild variant="heroOutline" size="xl">
-                <a href="#services">Our Services</a>
-              </Button>
+              <a
+                href="https://links.journeywell.io/widget/booking/zhpX7oUADvHcPFEJGOYl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-teal-500 hover:bg-teal-600 text-white font-semibold px-7 py-3.5 rounded-full transition-colors shadow-lg shadow-teal-200"
+              >
+                Book Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+              <a
+                href="#services"
+                className="inline-flex items-center justify-center border border-slate-200 text-slate-700 hover:border-teal-400 hover:text-teal-600 font-semibold px-7 py-3.5 rounded-full transition-colors"
+              >
+                Our Services
+              </a>
             </div>
-            <div className="flex gap-8 pt-4">
-              {stats.map((s, i) => (
+
+            {/* Stats */}
+            <div className="flex gap-8 pt-4 border-t border-slate-100">
+              {[
+                { val: "18+", label: "Years Experience" },
+                { val: "124", label: "Biomarkers Tested" },
+                { val: "3", label: "Clinicians On Team" },
+              ].map((s, i) => (
                 <div key={i}>
-                  <p className="text-2xl font-bold text-foreground">{s.val}</p>
-                  <p className="text-xs text-muted-foreground">{s.label}</p>
+                  <p className="text-2xl font-bold text-slate-900">{s.val}</p>
+                  <p className="text-xs text-slate-400">{s.label}</p>
                 </div>
               ))}
             </div>
           </motion.div>
-          <motion.div {...fade(0.3)} className="hidden md:flex justify-center">
-            <div className="relative">
-              <div className="w-80 h-80 rounded-3xl overflow-hidden border border-border/50 shadow-card">
-                <img src={heroFull} alt={ownerName} className="w-full h-full object-cover object-top" />
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-glass rounded-2xl p-4">
-                <p className="text-sm font-bold text-foreground">{ownerName}</p>
-                <p className="text-xs text-primary">{profession}</p>
-              </div>
+
+          {/* Right — photo + floating card */}
+          <motion.div {...fade(0.3)} className="hidden md:flex justify-center relative">
+            <div className="w-[360px] h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-white">
+              <img src={heroPortrait} alt={ownerName} className="w-full h-full object-cover object-top" />
+            </div>
+            {/* Floating card */}
+            <div className="absolute -bottom-4 -left-6 bg-white rounded-2xl shadow-xl p-4 border border-slate-100">
+              <p className="text-sm font-bold text-slate-900">{ownerName}</p>
+              <p className="text-xs text-teal-500">PharmD · Founder & Wellness Visionary</p>
+              <p className="text-xs text-slate-400 mt-1">SYNC Life · Baton Rouge, LA</p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" className="py-24 px-6">
+      {/* ── EXPERTISE BAR ── */}
+      <section className="bg-slate-900 py-8 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <h3 className="text-white font-bold text-lg" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Our Expertise<span className="text-teal-400">.</span>
+            </h3>
+            <ArrowRight className="w-5 h-5 text-slate-400" />
+          </div>
+          <div className="flex flex-wrap gap-3 justify-center sm:justify-end">
+            {specialties.map((s, i) => (
+              <span key={i} className="bg-teal-500/20 text-teal-300 border border-teal-500/30 text-sm font-medium px-5 py-2 rounded-full">
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FEATURE SECTION ── */}
+      <section className="bg-white py-24 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <motion.div {...fade(0.1)} className="flex justify-center">
-            <div className="w-64 h-64 rounded-full overflow-hidden border-2 border-primary/20">
-              <img src={heroPortrait} alt={ownerName} className="w-full h-full object-cover" />
-            </div>
+          <motion.div {...fade(0.1)} className="space-y-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Root-Cause Medicine,<br />Powered by 18 Years of<br />Clinical Expertise.
+            </h2>
           </motion.div>
-          <motion.div {...fade(0.2)} className="space-y-6">
-            <p className="text-primary font-medium tracking-wider uppercase text-sm">About</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Two Decades of Building Business Relationships</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              With over 20 years in commercial banking, {ownerName} has funded more than $200M in business loans, 
-              helping companies across Louisiana secure the capital they need to grow. As VP of Commercial Lending at {businessName}, 
-              Joey brings a personal touch to every client relationship.
+          <motion.div {...fade(0.2)} className="space-y-4">
+            <p className="text-slate-500 leading-relaxed">
+              SYNC Life combines a PharmD, an IFM-certified MD, and a nurse practitioner in one clinic — measuring 124 wellness biomarkers to build a fully personalized care plan for every patient. This isn't symptom management. It's root-cause medicine.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Whether you're looking for a commercial loan, line of credit, or SBA financing, you'll work directly with 
-              a dedicated banker who understands your business goals.
-            </p>
+            <a
+              href="#services"
+              className="inline-flex items-center text-teal-500 font-semibold hover:gap-3 gap-2 transition-all group text-sm"
+            >
+              Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
           </motion.div>
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="py-24 px-6 bg-secondary/30">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fade(0.1)} className="text-center mb-16 space-y-4">
-            <p className="text-primary font-medium tracking-wider uppercase text-sm">Services</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Commercial Lending Solutions</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Comprehensive business financing options tailored to your unique needs.</p>
+      {/* ── ABOUT ── */}
+      <section id="about" className="bg-slate-900 py-24 px-6">
+        <div className="max-w-6xl mx-auto space-y-10">
+          <motion.div {...fade(0.1)} className="flex items-center justify-between">
+            <h2 className="text-white text-3xl font-bold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              About Us<span className="text-teal-400">.</span>
+            </h2>
+            <a href="#contact" className="text-slate-400 hover:text-teal-400 transition-colors">
+              <ArrowRight className="w-5 h-5" />
+            </a>
+          </motion.div>
+          <motion.div {...fade(0.2)} className="relative rounded-3xl overflow-hidden h-80 sm:h-[440px] border border-slate-700">
+            <img src={heroPortrait} alt={ownerName} className="w-full h-full object-cover object-top" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+            <div className="absolute bottom-8 left-8 space-y-2">
+              <p className="text-white text-xl font-bold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                "After 18 years watching patients leave with more prescriptions and less health — I built something different."
+              </p>
+              <p className="text-teal-400 text-sm font-medium">— Dr. Angie Huff, PharmD · Founder, SYNC Life</p>
+            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white/10 backdrop-blur rounded-full flex items-center justify-center border border-white/20 cursor-pointer hover:bg-white/20 transition-colors">
+              <Play className="w-6 h-6 text-white ml-1" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── SERVICES ── */}
+      <section id="services" className="bg-slate-50 py-24 px-6">
+        <div className="max-w-6xl mx-auto space-y-12">
+          <motion.div {...fade(0.1)}>
+            <h2 className="text-slate-900 text-3xl font-bold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Our Services<span className="text-teal-500">.</span>
+            </h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-6">
             {services.map((s, i) => (
-              <motion.div key={i} {...fade(0.1 + i * 0.1)} className="bg-glass rounded-2xl p-8 space-y-4 hover:border-primary/30 transition-all duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-                  <s.icon className="w-6 h-6" />
+              <motion.div key={i} {...fade(0.1 + i * 0.08)} className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md hover:border-teal-200 transition-all duration-300">
+                <div className={`h-40 bg-gradient-to-br ${s.gradient} flex items-end p-6`}>
+                  <span className="text-white/60 text-xs font-medium uppercase tracking-widest">SYNC Life</span>
                 </div>
-                <h3 className="text-xl font-bold text-foreground">{s.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
-                <a href={`tel:${phoneNumber}`} className="text-primary text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                  Learn More <ChevronRight className="w-4 h-4" />
-                </a>
+                <div className="p-6 flex items-start justify-between gap-4">
+                  <div className="space-y-1">
+                    <h3 className="text-slate-900 font-bold text-lg" style={{ fontFamily: "'DM Sans', sans-serif" }}>{s.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
+                  </div>
+                  <a
+                    href="https://links.journeywell.io/widget/booking/zhpX7oUADvHcPFEJGOYl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-shrink-0 w-9 h-9 rounded-full border border-slate-200 group-hover:border-teal-400 group-hover:bg-teal-50 flex items-center justify-center transition-all"
+                  >
+                    <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-teal-500 transition-colors" />
+                  </a>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <motion.div {...fade(0.1)} className="space-y-4">
-            <p className="text-primary font-medium tracking-wider uppercase text-sm">Get in Touch</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Ready to Grow Your Business?</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              Schedule a free consultation to discuss your financing needs.
+      {/* ── INNOVATION CTA ── */}
+      <section className="bg-slate-900 py-24 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <motion.div {...fade(0.1)} className="space-y-8">
+            <h2 className="text-white text-3xl sm:text-4xl font-bold leading-tight" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Transforming Healthcare from the Inside Out<span className="text-teal-400">.</span>
+            </h2>
+            <p className="text-slate-400 leading-relaxed">
+              SYNC Life was built on a simple truth: feeling "fine" isn't good enough. Their Assess → Plan → Optimize process addresses every pillar of health — sleep, stress, movement, nutrition, mindset — with clinical precision.
             </p>
-          </motion.div>
-          <motion.div {...fade(0.2)} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <a href={`tel:${phoneNumber}`} className="flex items-center gap-3 bg-glass rounded-2xl px-6 py-4 hover:border-primary/30 transition-all">
-              <Phone className="w-5 h-5 text-primary" />
-              <div className="text-left">
-                <p className="text-sm font-medium text-foreground">{phoneDisplay}</p>
-                <p className="text-xs text-muted-foreground">Call anytime</p>
-              </div>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {values.map((v, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-teal-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-teal-400" />
+                  </div>
+                  <p className="text-slate-300 text-sm">{v}</p>
+                </div>
+              ))}
+            </div>
+            <a
+              href="https://links.journeywell.io/widget/booking/zhpX7oUADvHcPFEJGOYl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center bg-teal-500 hover:bg-teal-600 text-white font-semibold px-7 py-3.5 rounded-full transition-colors shadow-lg shadow-teal-900/30"
+            >
+              Book Free Vitality Consult <ArrowRight className="ml-2 w-4 h-4" />
             </a>
-            <a href={`mailto:${email}`} className="flex items-center gap-3 bg-glass rounded-2xl px-6 py-4 hover:border-primary/30 transition-all">
-              <Mail className="w-5 h-5 text-primary" />
-              <div className="text-left">
-                <p className="text-sm font-medium text-foreground">{email}</p>
-                <p className="text-xs text-muted-foreground">Email me</p>
-              </div>
-            </a>
           </motion.div>
-          <motion.div {...fade(0.3)} className="flex justify-center gap-3 pt-4">
-            {socials.map((s, i) => (
-              <a
-                key={i}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
-              >
-                <s.icon className="w-4 h-4" />
-              </a>
+          <motion.div {...fade(0.2)} className="hidden md:block relative rounded-3xl overflow-hidden h-[400px] border border-slate-700">
+            <img src={heroPortrait} alt={ownerName} className="w-full h-full object-cover object-top" />
+            <div className="absolute inset-0 bg-gradient-to-br from-teal-900/40 to-transparent" />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── TRUSTED BY ── */}
+      <section className="bg-white py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div {...fade(0.1)} className="mb-10">
+            <p className="text-slate-400 text-sm font-medium uppercase tracking-widest mb-2">Credentials & Affiliations</p>
+            <h2 className="text-slate-900 text-3xl font-bold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Trusted by Many<span className="text-teal-500">.</span>
+            </h2>
+          </motion.div>
+          <motion.div {...fade(0.2)} className="flex flex-wrap gap-4">
+            {partners.map((p, i) => (
+              <div key={i} className="bg-slate-50 border border-slate-100 rounded-full px-6 py-3 text-sm font-semibold text-slate-600">
+                {p}
+              </div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-bold text-foreground" style={{ fontFamily: "var(--font-heading)" }}>{businessName}</p>
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} {ownerName} × {businessName}. All rights reserved.</p>
+      {/* ── NEWSLETTER / BOOK CTA ── */}
+      <section className="bg-slate-50 py-20 px-6 border-t border-slate-100">
+        <div className="max-w-3xl mx-auto text-center space-y-6">
+          <motion.div {...fade(0.1)} className="space-y-3">
+            <h2 className="text-slate-900 text-3xl sm:text-4xl font-bold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Ready to feel like yourself again?
+            </h2>
+            <p className="text-slate-500">One conversation. Real answers. Book your free Vitality Consultation today.</p>
+          </motion.div>
+          <motion.div {...fade(0.2)} className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+            <a
+              href="https://links.journeywell.io/widget/booking/zhpX7oUADvHcPFEJGOYl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center bg-teal-500 hover:bg-teal-600 text-white font-semibold px-7 py-3.5 rounded-full transition-colors shadow-lg shadow-teal-200"
+            >
+              Book Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── FOOTER ── */}
+      <footer className="bg-slate-900 py-16 px-6">
+        <div className="max-w-6xl mx-auto grid sm:grid-cols-4 gap-10">
+          {/* Brand */}
+          <div className="space-y-4 sm:col-span-1">
+            <p className="text-white font-bold text-xl" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              {businessName}<span className="text-teal-400">.</span>
+            </p>
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Integrative medicine for people who want real answers. Root-cause care. Personalized plans. Baton Rouge, LA.
+            </p>
+            <div className="flex gap-3">
+              <a href="https://www.instagram.com/angiehuffpharmd/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-400 transition-colors">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="https://www.facebook.com/synclifebr/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-400 transition-colors">
+                <Facebook className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="space-y-4">
+            <h4 className="text-white text-sm font-semibold uppercase tracking-widest">Navigate</h4>
+            <ul className="space-y-2 text-sm text-slate-400">
+              <li><a href="#about" className="hover:text-teal-400 transition-colors">About</a></li>
+              <li><a href="#services" className="hover:text-teal-400 transition-colors">Services</a></li>
+              <li><a href="#contact" className="hover:text-teal-400 transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div className="space-y-4">
+            <h4 className="text-white text-sm font-semibold uppercase tracking-widest">Company</h4>
+            <ul className="space-y-2 text-sm text-slate-400">
+              <li><a href="#about" className="hover:text-teal-400 transition-colors">About Us</a></li>
+              <li><a href="#services" className="hover:text-teal-400 transition-colors">Services</a></li>
+              <li><a href="https://www.instagram.com/angiehuffpharmd/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">Instagram</a></li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div id="contact" className="space-y-4">
+            <h4 className="text-white text-sm font-semibold uppercase tracking-widest">Contact</h4>
+            <ul className="space-y-3 text-sm text-slate-400">
+              <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-teal-400" /> {phoneDisplay}</li>
+              <li className="flex items-center gap-2"><Mail className="w-4 h-4 text-teal-400" /> {email}</li>
+              <li className="flex items-start gap-2"><MapPin className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" /> 18303 Perkins Rd E, Suite 403<br />Baton Rouge, LA 70810</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-slate-800 text-center">
+          <p className="text-slate-500 text-xs">© {new Date().getFullYear()} {ownerName} × {businessName}. All rights reserved.</p>
         </div>
       </footer>
     </div>
